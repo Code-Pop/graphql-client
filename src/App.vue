@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p v-for="book in result.allBooks" :key="book.id">
+      {{ book.title }}
+    </p>
   </div>
 </template>
 
