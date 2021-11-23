@@ -7,6 +7,10 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.4",
+    "@vue/apollo-composable": "^4.0.0-alpha.15",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.12.6",
     "vue": "^3.2.16"
   },
   "devDependencies": {
