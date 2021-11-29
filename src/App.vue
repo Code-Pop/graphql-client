@@ -10,7 +10,7 @@
 import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 
-const allBooksQuery = gql`
+const ALL_BOOKS_QUERY = gql`
   query AllBooks {
     allBooks {
       id
@@ -23,8 +23,8 @@ const allBooksQuery = gql`
 export default {
   name: 'App',
   setup() {
-    const { result } = useQuery(allBooksQuery)
-
+    const { result } = useQuery(ALL_BOOKS_QUERY)
+    
     console.log(result)
 
     return { result }
