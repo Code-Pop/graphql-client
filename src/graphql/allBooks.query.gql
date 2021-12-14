@@ -1,0 +1,7 @@
+query AllBooks {
+  allBooks {
+    id
+    title
+    rating
+  }
+}
