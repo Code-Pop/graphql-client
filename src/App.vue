@@ -1,5 +1,6 @@
 <template>
   <div>
+    <input type="text" v-model="searchTerm" />
     <p v-for="book in result.allBooks" :key="book.id">
       {{ book.title }}
     </p>
@@ -7,15 +8,19 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import { useQuery } from '@vue/apollo-composable'
 import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
 
 export default {
   name: 'App',
   setup() {
-    const { result } = useQuery(ALL_BOOKS_QUERY, { search: 'the' })
+    const searchTerm = ref('')
+    const { result } = useQuery(ALL_BOOKS_QUERY, () => ({ 
+      search: searchTerm.value 
+    }))
 
-    return { result }
+    return { result, searchTerm }
   },
 }
 </script>
