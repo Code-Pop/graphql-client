@@ -13,9 +13,7 @@ import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
 export default {
   name: 'App',
   setup() {
-    const { result } = useQuery(ALL_BOOKS_QUERY)
-    
-    console.log(result)
+    const { result } = useQuery(ALL_BOOKS_QUERY, { search: 'the' })
 
     return { result }
   },
