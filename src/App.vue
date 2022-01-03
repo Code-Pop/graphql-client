@@ -20,9 +20,15 @@ export default {
   name: 'App',
   setup() {
     const searchTerm = ref('')
-    const { result, loading, error } = useQuery(ALL_BOOKS_QUERY, () => ({ 
-      search: searchTerm.value 
-    }))
+    const { result, loading, error } = useQuery(
+      ALL_BOOKS_QUERY, 
+      () => ({ 
+        search: searchTerm.value 
+      }),
+      () => ({
+        debounce: 500
+      })
+    )
 
     return { result, searchTerm, loading, error }
   },
