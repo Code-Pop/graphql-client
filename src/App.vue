@@ -26,7 +26,7 @@
 import { ref } from 'vue'
 import { useQuery, useResult } from '@vue/apollo-composable'
 import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
-import EditRating from './components/EditRating'
+import EditRating from './components/EditRating.vue'
 
 export default {
   name: 'App',

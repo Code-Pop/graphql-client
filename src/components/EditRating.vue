@@ -10,7 +10,7 @@
 <script>
 import { ref } from 'vue'
 export default {
-  emits: ['closeForm],
+  emits: ['closeForm'],
   props: {
     initialRating: {
       type: Number,
