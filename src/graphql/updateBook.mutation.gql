@@ -1,0 +1,7 @@
+mutation UpdateBook($id: ID!, $rating: Float) {
+  updateBook(input: { id: $id, rating: $rating }) {
+    id
+    title
+    rating
+  }
+}
