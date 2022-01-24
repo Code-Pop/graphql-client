@@ -1,0 +1,5 @@
+fragment BookFragment on Book {
+  id
+  title
+  rating
+}
