@@ -1,0 +1,7 @@
+#import './book.fragment.gql'
+
+mutation AddBook($input: BookInput!) {
+  addBook(input: $input) {
+    ...BookFragment
+  }
+}

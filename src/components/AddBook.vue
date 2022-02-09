@@ -27,6 +27,9 @@
 
 <script>
 import { reactive } from 'vue'
+import ADD_BOOK_MUTATION from '../graphql/addBook.mutation.gql'
+import { useMutation } from '@vue/apollo-composable'
+
 export default {
   emits: ['closeForm'],
   setup(_, { emit }) {
@@ -38,10 +41,16 @@ export default {
       description: '',
     })
 
-    const addBook = () => {
-      console.log(newBook)
-      emit('closeForm')
-    }
+    const { mutate: addBook, onDone } = useMutation(
+      ADD_BOOK_MUTATION,
+      () => ({
+        variables: {
+          input: newBook
+        }
+      })
+    )
+
+    onDone(() => emit('closeForm'))
 
     return {
       addBook,
