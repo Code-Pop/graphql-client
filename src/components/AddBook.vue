@@ -45,7 +45,7 @@ export default {
       ADD_BOOK_MUTATION,
       () => ({
         variables: {
-          input: newBook
+          input: {...newBook, rating: newBook.rating || null}
         }
       })
     )
