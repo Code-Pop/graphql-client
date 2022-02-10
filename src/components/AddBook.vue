@@ -67,6 +67,13 @@ export default {
             query: ALL_BOOKS_QUERY,
             variables: { search: props.search }
           })
+        },
+        optimisticResponse: {
+          addBook: {
+            __typename: 'Book',
+            id: -1,
+            ...newBook
+          }
         }
       })
     )
