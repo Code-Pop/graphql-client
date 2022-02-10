@@ -4,7 +4,7 @@
       <button v-if="!showNewBookForm" @click="showNewBookForm = true">
         Add a new book
       </button>
-      <AddBook v-if="showNewBookForm" @closeForm="showNewBookForm = false" />
+      <AddBook v-if="showNewBookForm" :search="searchTerm" @closeForm="showNewBookForm = false" />
     </div>
     <input type="text" v-model="searchTerm" />
     <p v-if="loading">Loading...</p>
@@ -53,7 +53,7 @@ export default {
       }),
       () => ({
         debounce: 500,
-        enabled: searchTerm.value.length > 2
+        // enabled: searchTerm.value.length > 2
       })
     )
 

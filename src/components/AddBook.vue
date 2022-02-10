@@ -28,11 +28,18 @@
 <script>
 import { reactive } from 'vue'
 import ADD_BOOK_MUTATION from '../graphql/addBook.mutation.gql'
+import ALL_BOOKS_QUERY from '../graphql/allBooks.query.gql'
 import { useMutation } from '@vue/apollo-composable'
 
 export default {
   emits: ['closeForm'],
-  setup(_, { emit }) {
+  props: {
+    search: {
+      type: String,
+      required: true
+    }
+  },
+  setup(props, { emit }) {
     const newBook = reactive({
       title: '',
       author: '',
@@ -46,6 +53,20 @@ export default {
       () => ({
         variables: {
           input: {...newBook, rating: newBook.rating || null}
+        },
+        update(cache, response) {
+          const sourceData = cache.readQuery({
+            query: ALL_BOOKS_QUERY,
+            variables: { search: props.search }
+          })
+          const data = {
+            allBooks: [...sourceData.allBooks, response.data.addBook]
+          }
+          cache.writeQuery({
+            data,
+            query: ALL_BOOKS_QUERY,
+            variables: { search: props.search }
+          })
         }
       })
     )
