@@ -5,8 +5,16 @@ import {
   InMemoryCache,
 } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
+import { WebSocketLink } from '@apollo/client/link/ws'
 
 import App from './App.vue'
+
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost;4000/graphql',
+  options: {
+    reconnect: true
+  }
+})
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',

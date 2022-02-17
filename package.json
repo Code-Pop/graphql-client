@@ -12,6 +12,7 @@
     "@vue/apollo-composable": "^4.0.0-alpha.16",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.12.6",
+    "subscriptions-transport-ws": "^0.11.0",
     "vue": "^3.2.16"
   },
   "devDependencies": {
