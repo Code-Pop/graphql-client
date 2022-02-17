@@ -61,7 +61,13 @@ export default {
     subscribeToMore(() => ({
       document: BOOK_SUBSCRIPTION,
       updateQuery(previousResult, newResult) {
-        console.log({ previousResult, newResult })
+        const res = {
+          allBooks: [
+            ...previousResult.allBooks,
+            newResult.subscriptionData.data.bookSub
+          ]
+        }
+        return res
       }
     }))
 
