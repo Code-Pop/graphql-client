@@ -12,7 +12,7 @@ import App from './App.vue'
 import { getMainDefinition } from '@apollo/client/utilities'
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost;4000/graphql',
+  uri: `ws://localhost:4000/graphql`,
   options: {
     reconnect: true
   }
