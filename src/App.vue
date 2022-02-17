@@ -32,6 +32,7 @@
 import { ref } from 'vue'
 import { useQuery, useResult } from '@vue/apollo-composable'
 import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
+import BOOK_SUBSCRIPTION from './graphql/newBook.subscription.gql'
 import EditRating from './components/EditRating.vue'
 import AddBook from './components/AddBook.vue'
 
