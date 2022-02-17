@@ -47,7 +47,7 @@ export default {
     const activeBook = ref(null)
     const showNewBookForm = ref(false)
 
-    const { result, loading, error } = useQuery(
+    const { result, loading, error, subscribeToMore } = useQuery(
       ALL_BOOKS_QUERY,
       () => ({
         search: searchTerm.value,
@@ -57,6 +57,13 @@ export default {
         // enabled: searchTerm.value.length > 2
       })
     )
+
+    subscribeToMore(() => ({
+      document: BOOK_SUBSCRIPTION,
+      updateQuery(previousResult, newResult) {
+        console.log({ previousResult, newResult })
+      }
+    }))
 
     const books = useResult(result, [], data => data.allBooks)
 
