@@ -61,8 +61,8 @@ export default {
     const books = useResult(result, [], data => data.allBooks)
 
     const { result: favBooksResult } = useQuery(FAVORITE_BOOKS_QUERY)
-
-    console.log(favBooksResult)
+    
+    console.log(favBooksResult.value)
 
     return { books, searchTerm, loading, error, activeBook, showNewBookForm }
   },
