@@ -5,6 +5,7 @@ import {
   InMemoryCache,
 } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
+import typeDefs from './graphql/typedefs.gql'
 
 import App from './App.vue'
 

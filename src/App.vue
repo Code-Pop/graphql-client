@@ -32,6 +32,7 @@
 import { ref } from 'vue'
 import { useQuery, useResult } from '@vue/apollo-composable'
 import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
+import FAVORITE_BOOKS_QUERY from './graphql/favoriteBooks.query.gql'
 import EditRating from './components/EditRating.vue'
 import AddBook from './components/AddBook.vue'
 
@@ -58,6 +59,10 @@ export default {
     )
 
     const books = useResult(result, [], data => data.allBooks)
+
+    const { result: favBooksResult } = useQuery(FAVORITE_BOOKS_QUERY)
+
+    console.log(favBooksResult)
 
     return { books, searchTerm, loading, error, activeBook, showNewBookForm }
   },
