@@ -17,6 +17,7 @@ const cache = new InMemoryCache()
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache,
+  typeDefs
 })
 
 const app = createApp({
