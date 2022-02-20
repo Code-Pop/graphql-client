@@ -19,7 +19,14 @@ const cache = new InMemoryCache()
 cache.writeQuery({
   query: FAVORITE_BOOKS_QUERY,
   data: {
-    favoriteBooks: []
+    favoriteBooks: [
+      {
+        __typename: 'Book',
+        title: 'My Book',
+        id: 123,
+        rating: 5
+      }
+    ]
   }
 })
 
