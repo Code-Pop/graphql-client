@@ -1,0 +1,7 @@
+#import './book.fragment.gql'
+
+mutation addBookToFavorites($book: Book!) {
+  addBookToFavorites(book: $book) @client {
+    ...BookFragment
+  }
+}

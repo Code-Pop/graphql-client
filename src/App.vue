@@ -25,6 +25,7 @@
             <p v-for="book in books" :key="book.id">
               {{ book.title }} - {{ book.rating }}
               <button @click="activeBook = book">Edit rating</button>
+              <button @click="addBookToFavorites({ book })">Add to Favorites</button>
             </p>
           </div>
           <div class="list">
@@ -41,7 +42,8 @@
 
 <script>
 import { ref } from 'vue'
-import { useQuery, useResult } from '@vue/apollo-composable'
+import { useQuery, useResult, useMutation } from '@vue/apollo-composable'
+import ADD_BOOK_TO_FAVORITES_MUTATION from './graphql/addBookToFavorites.mutation.gql'
 import ALL_BOOKS_QUERY from './graphql/allBooks.query.gql'
 import FAVORITE_BOOKS_QUERY from './graphql/favoriteBooks.query.gql'
 import EditRating from './components/EditRating.vue'
@@ -73,7 +75,20 @@ export default {
 
     const { result: favBooksResult } = useQuery(FAVORITE_BOOKS_QUERY)
 
-    return { books, searchTerm, loading, error, activeBook, showNewBookForm, favBooksResult }
+    const { mutate: addBookToFavorites } = useMutation(
+      ADD_BOOK_TO_FAVORITES_MUTATION
+    )
+
+    return { 
+      books, 
+      searchTerm, 
+      loading, 
+      error, 
+      activeBook, 
+      showNewBookForm, 
+      favBooksResult,
+      addBookToFavorites
+    }
   },
 }
 </script>
