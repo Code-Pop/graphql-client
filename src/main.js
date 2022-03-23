@@ -30,10 +30,24 @@ cache.writeQuery({
   }
 })
 
+const resolvers = {
+  Mutation: {
+    addBookToFavorites: (_, { book }, { cache }) => {
+      const data = cache.readQuery({ query: FAVORITE_BOOKS_QUERY })
+      const newData = {
+        favoriteBooks: [...data.favoriteBooks, book]
+      }
+      cache.writeQuery({ query: FAVORITE_BOOKS_QUERY, data: newData })
+      return newData.favoriteBooks
+    },
+  }
+}
+
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache,
-  typeDefs
+  typeDefs,
+  resolvers
 })
 
 const app = createApp({
